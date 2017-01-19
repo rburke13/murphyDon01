@@ -24,8 +24,8 @@ public class SimpleMath {
             if ( args.length < 2 || Long.parseLong(args[0]) < 0 || Long.parseLong(args[1]) < 0 ) {
                 System.out.println("Provide at least 2 positive integer arguments!");
             } else {
-                System.out.println( args[0] + "^2: " + square( Long.parseLong(args[0]) ) );
-                System.out.println( args[0] + "^" + args[1] + ": " + exponent( Long.parseLong(args[0]), Long.parseLong(args[1]) ) );
+                // System.out.println( args[0] + "^2: " + square( Long.parseLong(args[0]) ) );
+                // System.out.println( args[0] + "^" + args[1] + ": " + exponent( Long.parseLong(args[0]), Long.parseLong(args[1]) ) );
                 System.out.println( args[0] + "!: " + factorial( Long.parseLong(args[0]) ) );
             }
         } catch (Exception e) {
