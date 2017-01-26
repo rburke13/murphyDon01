@@ -3,6 +3,14 @@ public class DateDistanceTestHarness {
     private static int attempts = 0;
     private static int successes = 0;
 
+    private static String MON = "Monday";
+    private static String TUES = "Tuesday";
+    private static String WED = "Wednesday";
+    private static String THURS = "Thursday";
+    private static String FRI = "Friday";
+    private static String SAT = "Saturday";
+    private static String SUN = "Sunday";
+
     public static void main(String[] args) {
         attempts = 0;
         successes = 0;
@@ -346,7 +354,73 @@ public class DateDistanceTestHarness {
         int initialAttempts = attempts;
 
         try {
-            displaySuccessIfTrue( DateDistance.dayOfTheWeek(23, 4, 1986).equals("Wednesday") );
+            displaySuccessIfTrue( DateDistance.dayOfTheWeek(23, 4, 1986).equals(WED) );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.dayOfTheWeek(15, 8, 2060).equals(SUN) );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.dayOfTheWeek(10, 2, 1827).equals(SAT) );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.dayOfTheWeek(19, 7, 1785).equals(TUES) );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.dayOfTheWeek(28, 6, 2170).equals(THURS) );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.dayOfTheWeek(3, 9, 2010).equals(FRI) );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.dayOfTheWeek(15, 12, 2000).equals(FRI) );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.dayOfTheWeek(6, 11, 1912).equals(WED) );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.dayOfTheWeek(31, 10, 1865).equals(TUES) );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.dayOfTheWeek(20, 1, 2241).equals(WED) );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.dayOfTheWeek(9, 3, 2009).equals(MON) );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.dayOfTheWeek(1, 5, 1758).equals(MON) );
         } catch(Exception e) {
             displaySuccessIfTrue(false);
         }
@@ -355,12 +429,78 @@ public class DateDistanceTestHarness {
     }
 
     public static void test_longformDate() {
-        System.out.println("Testing longformDate    ...");
+        System.out.println("Testing longformDate...");
         int initialSuccesses = successes;
         int initialAttempts = attempts;
 
         try {
-            displaySuccessIfTrue( DateDistance.dayOfTheWeek(23, 4, 1986).equals("Wednesday, 23 April 1986") );
+            displaySuccessIfTrue( DateDistance.longformDate(23, 4, 1986).equals("Wednesday, 23 April 1986") );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.longformDate(15, 8, 2060).equals("Sunday, 15 August 2060") );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.longformDate(10, 2, 1827).equals("Saturday, 10 February 1827") );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.longformDate(19, 7, 1785).equals("Tuesday, 19 July 1785") );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.longformDate(28, 6, 2170).equals("Thursday, 28 June 2170") );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.longformDate(3, 9, 2010).equals("Friday, 3 September 2010") );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.longformDate(15, 12, 2000).equals("Friday, 15 December 2000") );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.longformDate(6, 11, 1912).equals("Wednesday, 6 November 1912") );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.longformDate(31, 10, 1865).equals("Tuesday, 31 October 1865") );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.longformDate(20, 1, 2241).equals("Wednesday, 20 January 2241") );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.longformDate(9, 3, 2009).equals("Monday, 9 March 2009") );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
+        try {
+            displaySuccessIfTrue( DateDistance.longformDate(1, 5, 1758).equals("Monday, 1 May 1758") );
         } catch(Exception e) {
             displaySuccessIfTrue(false);
         }
