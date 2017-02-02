@@ -425,6 +425,12 @@ public class DateDistanceTestHarness {
             displaySuccessIfTrue(false);
         }
 
+        try {
+            displaySuccessIfTrue( DateDistance.dayOfTheWeek(14, 8, 1949).equals(SUN) );
+        } catch(Exception e) {
+            displaySuccessIfTrue(false);
+        }
+
         System.out.println("dayOfTheWeek: " + (successes - initialSuccesses) + "/" + (attempts - initialAttempts) + " passed");
     }
 
