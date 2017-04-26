@@ -72,7 +72,46 @@ public class MazeWalker {
      */
     public WalkerState areWeThereYet(int currentX, int currentY) {
         // Implement me!
-        return WalkerState.IMPOSSIBLE_TO_GET_THERE;
+        moveTally++;
+        beenThere[currentY][currentX] = true;
+        if (currentX == this.destinationX && currentY == this.destinationY) {
+            return WalkerState.THERE_ALREADY;
+        } else {
+            if (maze.getLocation(currentX, currentY).getLeft().isOpen() == true && beenThere[currentY][currentX -1] == false) {
+                pathIndex++;
+                path[pathIndex] = WalkerState.MOVE_LEFT;
+                return WalkerState.MOVE_LEFT;
+            } else if (maze.getLocation(currentX, currentY).getAbove().isOpen() == true && beenThere[currentY - 1][currentX] == false) {
+                pathIndex++;
+                path[pathIndex] = WalkerState.MOVE_UP;
+                return WalkerState.MOVE_UP;
+            } else if (maze.getLocation(currentX, currentY).getRight().isOpen() == true && beenThere[currentY][currentX + 1] == false) {
+                pathIndex++;
+                path[pathIndex] = WalkerState.MOVE_RIGHT;
+                return WalkerState.MOVE_RIGHT;
+            } else if (maze.getLocation(currentX, currentY).getBelow().isOpen() == true && beenThere[currentY + 1][currentX] == false) {
+                pathIndex++;
+                path[pathIndex] = WalkerState.MOVE_DOWN;
+                return WalkerState.MOVE_DOWN;
+            } else if (pathIndex == -1){
+                return WalkerState.IMPOSSIBLE_TO_GET_THERE;
+            } else { // backtracking
+                if (path[pathIndex] == WalkerState.MOVE_LEFT) {
+                    pathIndex--;
+                    return WalkerState.MOVE_RIGHT;
+                } else if (path[pathIndex] == WalkerState.MOVE_UP) {
+                    pathIndex--;
+                    return WalkerState.MOVE_DOWN;
+                } else if (path[pathIndex] == WalkerState.MOVE_RIGHT) {
+                    pathIndex--;
+                    return WalkerState.MOVE_LEFT;
+                } else if (path[pathIndex] == WalkerState.MOVE_DOWN) {
+                    pathIndex--;
+                    return WalkerState.MOVE_UP;
+                }
+            }
+        }
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -106,6 +145,7 @@ public class MazeWalker {
      * The data structure for maintaining the current path.
      */
     private WalkerState[] path;
+    //size is height * width
 
     /**
      * The index for the current node in the path.
